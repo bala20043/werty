@@ -12,12 +12,12 @@ const portfolioSlides = [
 ];
 
 const projects = [
-    { name: 'E-Commerce Platform', type: 'Website Development', desc: 'A fully responsive online store with payment integration and inventory management.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop' },
-    { name: 'Fitness Tracker App', type: 'App Development', desc: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics.', image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&h=400&fit=crop' },
-    { name: 'Smart Home System', type: 'Hardware Projects', desc: 'IoT-based home automation system using Arduino and Raspberry Pi.', image: 'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=600&h=400&fit=crop' },
-    { name: 'Inventory Manager', type: 'Software Projects', desc: 'Desktop application for managing warehouse inventory with barcode scanning.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop' },
-    { name: 'Restaurant Website', type: 'Website Development', desc: 'Modern restaurant website with online ordering and table reservation system.', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop' },
-    { name: 'Learning Platform', type: 'Software Projects', desc: 'Online education platform with video courses, quizzes, and progress tracking.', image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop' },
+    { name: 'E-Commerce Platform', type: 'Website Development', slug: 'website-development', url: 'https://www.amazon.in/', desc: 'A fully responsive online store with payment integration and inventory management.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop' },
+    { name: 'Fitness Tracker App', type: 'App Development', slug: 'app-development', url: '#', desc: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics.', image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&h=400&fit=crop' },
+    { name: 'Smart Home System', type: 'Hardware Projects', slug: 'hardware-projects', url: '#', desc: 'IoT-based home automation system using Arduino and Raspberry Pi.', image: 'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=600&h=400&fit=crop' },
+    { name: 'Inventory Manager', type: 'Software Projects', slug: 'software-projects', url: '#', desc: 'Desktop application for managing warehouse inventory with barcode scanning.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop' },
+    { name: 'Restaurant Website', type: 'Website Development', slug: 'website-development', url: '#', desc: 'Modern restaurant website with online ordering and table reservation system.', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop' },
+    { name: 'Learning Platform', type: 'Software Projects', slug: 'software-projects', url: '#', desc: 'Online education platform with video courses, quizzes, and progress tracking.', image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop' },
 ];
 
 const servicesSummary = [
@@ -57,7 +57,12 @@ export default function Projects() {
                                 transition={{ duration: 0.6, delay: i * 0.15, type: "spring", stiffness: 100 }}
                                 className="glass-card overflow-hidden group relative cursor-pointer hover:shadow-[0_0_40px_rgba(0,87,255,0.2)] hover:border-primary/30 transition-shadow duration-500"
                             >
-                                <div className="relative h-[320px] overflow-hidden">
+                                <a
+                                    href={project.url}
+                                    target={project.url !== '#' ? "_blank" : "_self"}
+                                    rel="noopener noreferrer"
+                                    className="block relative h-[320px] overflow-hidden"
+                                >
                                     <div className="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 pointer-events-none" />
                                     <img
                                         src={project.image}
@@ -74,11 +79,11 @@ export default function Projects() {
                                     <div className="absolute inset-x-0 bottom-0 p-6 translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 flex flex-col justify-end h-full">
                                         <h3 className="text-2xl font-heading font-semibold text-white mb-2 group-hover:text-primary transition-colors duration-300">{project.name}</h3>
                                         <p className="text-white/70 font-body text-sm mb-4 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.desc}</p>
-                                        <button className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white font-body font-semibold text-sm hover:tracking-wider transition-all duration-300 flex items-center gap-2 group/btn">
+                                        <div className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-white font-body font-semibold text-sm hover:tracking-wider transition-all duration-300 flex items-center gap-2 group/btn">
                                             View Project <span className="text-primary group-hover/btn:translate-x-2 transition-transform duration-300">→</span>
-                                        </button>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </motion.div>
                         ))}
                     </div>
@@ -114,10 +119,10 @@ export default function Projects() {
                     <h2 className="text-3xl font-heading font-bold text-white mb-8">Get In Touch</h2>
                     <div className="flex flex-wrap justify-center gap-8 mb-10">
                         <div className="flex items-center gap-3 text-white/60 font-body">
-                            <FaPhone className="text-primary" /> +91 XXXXX XXXXX
+                            <FaPhone className="text-primary" /> +91 9942712219
                         </div>
                         <div className="flex items-center gap-3 text-white/60 font-body">
-                            <FaEnvelope className="text-primary" /> info@alphasolution.in
+                            <FaEnvelope className="text-primary" /> alphaxheros@gmail.com
                         </div>
                         <div className="flex items-center gap-3 text-white/60 font-body">
                             <FaMapMarkerAlt className="text-primary" /> India
