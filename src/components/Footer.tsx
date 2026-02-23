@@ -31,10 +31,10 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-heading font-semibold text-white mb-4">Quick Links</h4>
                         <ul className="space-y-2.5">
-                            {['Home', 'About', 'Portfolio', 'Contact'].map((link) => (
+                            {['Home', 'About', 'Projects', 'Contact'].map((link) => (
                                 <li key={link}>
                                     <Link
-                                        to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
+                                        to={link === 'Home' ? '/' : `/${link.toLowerCase().replace('projects', 'projects')}`}
                                         className="text-white/60 hover:text-primary font-body text-base transition-colors duration-300 flex items-center gap-2"
                                     >
                                         <span className="w-1.5 h-1.5 bg-primary/50 rounded-full" />

@@ -5,7 +5,7 @@ import Lenis from 'lenis';
 import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
-import Portfolio from './pages/Portfolio';
+import Projects from './pages/Projects';
 import ServiceDetail from './pages/ServiceDetail';
 import Contact from './pages/Contact';
 import AdminLogin from './pages/AdminLogin';
@@ -42,7 +42,7 @@ function AnimatedRoutes() {
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin-login" element={<AdminLogin />} />

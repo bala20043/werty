@@ -14,7 +14,7 @@ const portfolioSlides = [
 const projects = [
     { name: 'E-Commerce Platform', type: 'Website Development', desc: 'A fully responsive online store with payment integration and inventory management.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop' },
     { name: 'Fitness Tracker App', type: 'App Development', desc: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics.', image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=600&h=400&fit=crop' },
-    { name: 'Smart Home System', type: 'Hardware Projects', desc: 'IoT-based home automation system using Arduino and Raspberry Pi.', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop' },
+    { name: 'Smart Home System', type: 'Hardware Projects', desc: 'IoT-based home automation system using Arduino and Raspberry Pi.', image: 'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=600&h=400&fit=crop' },
     { name: 'Inventory Manager', type: 'Software Projects', desc: 'Desktop application for managing warehouse inventory with barcode scanning.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop' },
     { name: 'Restaurant Website', type: 'Website Development', desc: 'Modern restaurant website with online ordering and table reservation system.', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop' },
     { name: 'Learning Platform', type: 'Software Projects', desc: 'Online education platform with video courses, quizzes, and progress tracking.', image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop' },
@@ -27,7 +27,7 @@ const servicesSummary = [
     { icon: <FaMicrochip />, title: 'Hardware Projects', slug: 'hardware-projects' },
 ];
 
-export default function Portfolio() {
+export default function Projects() {
     return (
         <div className="min-h-screen">
 
@@ -42,7 +42,7 @@ export default function Portfolio() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-14">
                         <span className="text-primary font-body text-sm font-semibold uppercase tracking-widest">Our Work</span>
-                        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mt-3">Portfolio</h2>
+                        <h2 className="text-3xl sm:text-4xl font-heading font-bold text-white mt-3">Projects</h2>
                         <p className="text-white/50 font-body text-lg mt-4 max-w-2xl mx-auto">
                             Explore a selection of projects we've delivered for our clients.
                         </p>

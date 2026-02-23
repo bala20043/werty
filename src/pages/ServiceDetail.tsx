@@ -27,9 +27,9 @@ const servicesData: Record<string, ServiceData> = {
             { src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=500&fit=crop', alt: 'Web Dev 3' },
         ],
         pricing: {
-            basic: { price: '₹9,999', features: ['5 Pages', 'Responsive Design', 'Contact Form', 'Basic SEO', '1 Month Support'] },
-            standard: { price: '₹24,999', features: ['10 Pages', 'Custom Design', 'CMS Integration', 'Advanced SEO', 'Analytics', '3 Months Support'] },
-            premium: { price: '₹49,999', features: ['Unlimited Pages', 'E-Commerce', 'Custom Features', 'Full SEO Suite', 'Priority Support', '6 Months Support'] },
+            basic: { price: '₹499', features: ['5 Pages', 'Responsive Design', 'Contact Form', 'Basic SEO', '1 Month Support'] },
+            standard: { price: '₹799', features: ['10 Pages', 'Custom Design', 'CMS Integration', 'Advanced SEO', 'Analytics', '3 Months Support'] },
+            premium: { price: '₹999', features: ['Unlimited Pages', 'E-Commerce', 'Custom Features', 'Full SEO Suite', 'Priority Support', '6 Months Support'] },
         },
     },
     'app-development': {
@@ -42,9 +42,9 @@ const servicesData: Record<string, ServiceData> = {
             { src: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&h=500&fit=crop', alt: 'App Dev 3' },
         ],
         pricing: {
-            basic: { price: '₹14,999', features: ['3 Screens', 'Basic UI', 'API Integration', 'Android Only', '1 Month Support'] },
-            standard: { price: '₹34,999', features: ['8 Screens', 'Custom UI/UX', 'Push Notifications', 'iOS + Android', 'Payment Gateway', '3 Months Support'] },
-            premium: { price: '₹74,999', features: ['Unlimited Screens', 'Advanced Features', 'Admin Panel', 'Full Analytics', 'Store Publishing', '6 Months Support'] },
+            basic: { price: '₹499', features: ['3 Screens', 'Basic UI', 'API Integration', 'Android Only', '1 Month Support'] },
+            standard: { price: '₹799', features: ['8 Screens', 'Custom UI/UX', 'Push Notifications', 'iOS + Android', 'Payment Gateway', '3 Months Support'] },
+            premium: { price: '₹999', features: ['Unlimited Screens', 'Advanced Features', 'Admin Panel', 'Full Analytics', 'Store Publishing', '6 Months Support'] },
         },
     },
     'software-projects': {
@@ -57,9 +57,9 @@ const servicesData: Record<string, ServiceData> = {
             { src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=500&fit=crop', alt: 'Software 3' },
         ],
         pricing: {
-            basic: { price: '₹19,999', features: ['Basic Features', 'Single User', 'Local Setup', 'Basic Support', '1 Month Support'] },
-            standard: { price: '₹49,999', features: ['Full Features', 'Multi-User', 'Cloud Deploy', 'Admin Panel', 'Database', '3 Months Support'] },
-            premium: { price: '₹99,999', features: ['Enterprise Grade', 'Unlimited Users', 'Custom Integrations', 'Full Security Audit', 'Priority Support', '6 Months Support'] },
+            basic: { price: '₹499', features: ['Basic Features', 'Single User', 'Local Setup', 'Basic Support', '1 Month Support'] },
+            standard: { price: '₹799', features: ['Full Features', 'Multi-User', 'Cloud Deploy', 'Admin Panel', 'Database', '3 Months Support'] },
+            premium: { price: '₹999', features: ['Enterprise Grade', 'Unlimited Users', 'Custom Integrations', 'Full Security Audit', 'Priority Support', '6 Months Support'] },
         },
     },
     'hardware-projects': {
@@ -68,13 +68,13 @@ const servicesData: Record<string, ServiceData> = {
         features: ['Arduino / ESP32', 'Raspberry Pi', 'PCB Design', 'IoT Solutions', 'Sensor Integration', 'Wireless Communication', 'Firmware Development', 'Prototype to Product'],
         images: [
             { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=500&fit=crop', alt: 'Hardware 1' },
-            { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&h=500&fit=crop', alt: 'Hardware 2' },
+            { src: 'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=1200&h=500&fit=crop', alt: 'Hardware 2' },
             { src: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=1200&h=500&fit=crop', alt: 'Hardware 3' },
         ],
         pricing: {
-            basic: { price: '₹4,999', features: ['Basic Circuit', 'Single Sensor', 'Arduino Based', 'Basic Code', '1 Month Support'] },
-            standard: { price: '₹14,999', features: ['Custom PCB', 'Multi-Sensor', 'WiFi/Bluetooth', 'Mobile App', 'Cloud Dashboard', '3 Months Support'] },
-            premium: { price: '₹34,999', features: ['Full Product', 'Industrial Grade', 'Custom Enclosure', 'Mass Production Ready', 'Full Documentation', '6 Months Support'] },
+            basic: { price: '₹499', features: ['Basic Circuit', 'Single Sensor', 'Arduino Based', 'Basic Code', '1 Month Support'] },
+            standard: { price: '₹799', features: ['Custom PCB', 'Multi-Sensor', 'WiFi/Bluetooth', 'Mobile App', 'Cloud Dashboard', '3 Months Support'] },
+            premium: { price: '₹999', features: ['Full Product', 'Industrial Grade', 'Custom Enclosure', 'Mass Production Ready', 'Full Documentation', '6 Months Support'] },
         },
     },
 };

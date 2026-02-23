@@ -41,12 +41,12 @@ const techSlides = [
 ];
 
 const services = [
-    { icon: <FaCode />, title: 'Website Development', description: 'Custom responsive websites built with modern frameworks and technologies.', price: '₹9,999', slug: 'website-development' },
-    { icon: <FaMobileAlt />, title: 'App Development', description: 'Native & cross-platform mobile applications for iOS and Android.', price: '₹14,999', slug: 'app-development' },
-    { icon: <FaDesktop />, title: 'Software Projects', description: 'Custom software solutions tailored to your business needs.', price: '₹19,999', slug: 'software-projects' },
-    { icon: <FaMicrochip />, title: 'Hardware Projects', description: 'IoT, embedded systems, Arduino & Raspberry Pi based solutions.', price: '₹4,999', slug: 'hardware-projects' },
-    { icon: <FaPaintBrush />, title: 'UI/UX Design', description: 'Beautiful, intuitive user interfaces and experience design.', price: '₹4,999', slug: 'website-development' },
-    { icon: <FaHeadset />, title: 'IT Support', description: '24/7 technical support and maintenance for your digital assets.', price: '₹2,999/mo', slug: 'software-projects' },
+    { icon: <FaCode />, title: 'Website Development', description: 'Custom responsive websites built with modern frameworks and technologies.', price: '₹999', slug: 'website-development' },
+    { icon: <FaMobileAlt />, title: 'App Development', description: 'Native & cross-platform mobile applications for iOS and Android.', price: '₹999', slug: 'app-development' },
+    { icon: <FaDesktop />, title: 'Software Projects', description: 'Custom software solutions tailored to your business needs.', price: '₹999', slug: 'software-projects' },
+    { icon: <FaMicrochip />, title: 'Hardware Projects', description: 'IoT, embedded systems, Arduino & Raspberry Pi based solutions.', price: '₹799', slug: 'hardware-projects' },
+    { icon: <FaPaintBrush />, title: 'UI/UX Design', description: 'Beautiful, intuitive user interfaces and experience design.', price: '₹499', slug: 'website-development' },
+    { icon: <FaHeadset />, title: 'IT Support', description: '24/7 technical support and maintenance for your digital assets.', price: '₹499/mo', slug: 'software-projects' },
 ];
 
 const stats = [
@@ -135,10 +135,10 @@ export default function Home() {
                                         </MagneticWrapper>
                                         <MagneticWrapper intensity={0.1}>
                                             <Link
-                                                to="/portfolio"
+                                                to="/projects"
                                                 className="block relative overflow-hidden px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 font-heading font-semibold text-sm rounded-xl transition-all duration-300"
                                             >
-                                                View Portfolio
+                                                View Projects
                                             </Link>
                                         </MagneticWrapper>
                                     </div>

@@ -138,10 +138,10 @@ export default function Navbar() {
                         </div>
 
                         <Link
-                            to="/portfolio"
+                            to="/projects"
                             className="relative text-white/80 hover:text-white font-body text-lg font-medium transition-colors duration-300 group"
                         >
-                            Portfolio
+                            Projects
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                         </Link>
                         <Link
@@ -216,8 +216,8 @@ export default function Navbar() {
                             ))}
                         </div>
                     </div>
-                    <Link to="/portfolio" className="block text-white/80 hover:text-primary font-body text-lg py-2">
-                        Portfolio
+                    <Link to="/projects" className="block text-white/80 hover:text-primary font-body text-lg py-2">
+                        Projects
                     </Link>
                     <Link to="/contact" className="block text-white/80 hover:text-primary font-body text-lg py-2">
                         Contact
