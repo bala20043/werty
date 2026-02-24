@@ -43,7 +43,8 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
         setSuccess(false);
 
         try {
-            const { error: dbError } = await supabase.from('orders').insert([
+            // Add a timeout to the fetch request indirectly by wrapping the promise
+            const orderPromise = supabase.from('orders').insert([
                 {
                     client_name: form.client_name,
                     phone: form.phone,
@@ -55,6 +56,12 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
                     status: 'pending',
                 },
             ]);
+
+            const timeoutPromise = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('Connection timeout. Please check your internet or Supabase status.')), 10000)
+            );
+
+            const { error: dbError } = await Promise.race([orderPromise, timeoutPromise]) as any;
 
             if (dbError) throw dbError;
 
@@ -69,7 +76,24 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
                 description: '',
             });
         } catch (err: unknown) {
-            const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+            console.error('Order Submission Error:', err);
+            let message = 'Something went wrong. Please try again.';
+
+            if (err instanceof Error) {
+                if (err.message.includes('timeout') || err.message.includes('fetch')) {
+                    message = 'Database connection error. Please ensure your Supabase project is active and not paused.';
+                } else {
+                    message = err.message;
+                }
+            } else if (typeof err === 'object' && err !== null && 'code' in err) {
+                const errorObj = err as { code: string; message: string };
+                if (errorObj.code === 'PGRST301' || errorObj.message?.includes('not found')) {
+                    message = 'Configuration error: The "orders" table does not exist in your Supabase database.';
+                } else {
+                    message = `Database error (${errorObj.code}): ${errorObj.message}`;
+                }
+            }
+
             setError(message);
         } finally {
             setLoading(false);

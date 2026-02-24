@@ -23,12 +23,30 @@ export default function AdminDashboard() {
         try {
             let query = supabase.from('orders').select('*').order('created_at', { ascending: false });
             if (filter !== 'all') query = query.eq('status', filter);
-            const { data, error } = await query;
+
+            // Add a timeout to the fetch request
+            const fetchPromise = query;
+            const timeoutPromise = new Promise((_, reject) =>
+                setTimeout(() => reject(new Error('Connection timeout')), 10000)
+            );
+
+            const { data, error } = await Promise.race([fetchPromise, timeoutPromise]) as any;
+
             if (error) throw error;
             setOrders((data as Order[]) || []);
         } catch (err) {
             console.error('Error fetching orders:', err);
-            // Demo data for when Supabase is not configured
+
+            const isTimeout = err instanceof Error && err.message.includes('timeout');
+            const isFetchError = err instanceof Error && err.message.includes('fetch');
+
+            if (isTimeout || isFetchError) {
+                showToast('Database connection error. Using demo data.', 'error');
+            } else if (typeof err === 'object' && err !== null && 'code' in err && (err as any).code === 'PGRST301') {
+                showToast('Table "orders" not found. Using demo data.', 'error');
+            }
+
+            // Demo data for when Supabase is not configured or reachable
             setOrders([
                 { id: '1', client_name: 'Demo User', phone: '+91 98765 43210', email: 'demo@example.com', service: 'Website Development', budget: '₹25,000 - ₹50,000', timeline: '2-4 weeks', description: 'Need a business website', status: 'pending', created_at: new Date().toISOString() },
                 { id: '2', client_name: 'Test Client', phone: '+91 12345 67890', email: 'test@example.com', service: 'App Development', budget: '₹50,000 - ₹1,00,000', timeline: '1-2 months', description: 'Mobile app for e-commerce', status: 'in_progress', created_at: new Date(Date.now() - 86400000).toISOString() },
