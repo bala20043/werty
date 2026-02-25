@@ -111,6 +111,13 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6 relative">
+            {/* DEBUG INFO: Remove this later */}
+            <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-blue-300 text-xs font-mono mb-4">
+                Debug Info:<br />
+                Supabase URL: {import.meta.env.VITE_SUPABASE_URL ? import.meta.env.VITE_SUPABASE_URL.substring(0, 20) + '...' : 'NOT SET!'}<br />
+                Anon Key: {import.meta.env.VITE_SUPABASE_ANON_KEY ? 'SET' : 'NOT SET!'}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="relative group">
                     <input
