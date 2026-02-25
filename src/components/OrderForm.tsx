@@ -52,29 +52,34 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
         }
 
         try {
-            // Add a timeout to the fetch request indirectly by wrapping the promise
-            const orderPromise = supabase.from('orders').insert([
-                {
-                    client_name: form.client_name,
-                    phone: form.phone,
-                    email: form.email,
-                    service: form.service,
-                    budget: form.budget,
-                    timeline: form.timeline,
-                    description: form.description,
-                    status: 'pending',
+            // Priority: Try the Vercel Proxy (Bypasses ISP blocking)
+            const response = await fetch('/api/submit-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            ]);
+                body: JSON.stringify({
+                    ...form,
+                    status: 'pending',
+                }),
+            });
 
-            const timeoutPromise = new Promise((_, reject) =>
-                setTimeout(() => reject(new Error('Connection timeout. Please check your internet or Supabase status.')), 10000)
-            );
+            if (response.ok) {
+                // Success via Proxy
+                setSuccess(true);
+            } else {
+                // If Proxy fails (e.g. running locally without vercel dev), 
+                // fallback to direct Supabase call
+                const { error: dbError } = await supabase.from('orders').insert([
+                    {
+                        ...form,
+                        status: 'pending',
+                    },
+                ]);
+                if (dbError) throw dbError;
+                setSuccess(true);
+            }
 
-            const { error: dbError } = await Promise.race([orderPromise, timeoutPromise]) as any;
-
-            if (dbError) throw dbError;
-
-            setSuccess(true);
             setForm({
                 client_name: '',
                 phone: '',
