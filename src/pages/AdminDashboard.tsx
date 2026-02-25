@@ -82,8 +82,8 @@ export default function AdminDashboard() {
         setOrders((prev) => prev.filter((o) => o.id !== id));
     };
 
-    const logout = () => {
-        sessionStorage.removeItem('alpha_admin_auth');
+    const logout = async () => {
+        await supabase.auth.signOut();
         navigate('/admin-login');
     };
 

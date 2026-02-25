@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 export default function AdminLogin() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -13,15 +14,17 @@ export default function AdminLogin() {
         setError('');
         setLoading(true);
 
-        // Hardcoded credentials — replace with Supabase Auth later
-        await new Promise((r) => setTimeout(r, 800));
+        const { error: authError } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
 
-        if (username === 'admin' && password === ':A1pha@4271') {
-            sessionStorage.setItem('alpha_admin_auth', 'true');
-            navigate('/admin-dashboard');
+        if (authError) {
+            setError(authError.message);
         } else {
-            setError('Invalid username or password');
+            navigate('/admin-dashboard');
         }
+
         setLoading(false);
     };
 
@@ -40,14 +43,14 @@ export default function AdminLogin() {
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
-                            <label className="block text-white/60 font-body text-sm mb-2">Username</label>
+                            <label className="block text-white/60 font-body text-sm mb-2">Email Address</label>
                             <input
-                                type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 required
                                 className="w-full px-4 py-3 bg-dark/60 border border-primary/10 rounded-xl text-white font-body placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
-                                placeholder="Enter username"
+                                placeholder="admin@example.com"
                             />
                         </div>
                         <div>
