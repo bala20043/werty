@@ -157,7 +157,7 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center">
                         <MagneticWrapper intensity={0.1}>
                             <a
-                                href="tel:+919942712219"
+                                href=""
                                 className="flex items-center gap-2 text-primary font-body text-lg font-semibold animate-pulse-glow px-4 py-2 rounded-full border border-primary/30 hover:bg-primary/10 transition-colors"
                             >
                                 <FaPhone className="text-sm" />
