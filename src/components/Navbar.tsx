@@ -161,7 +161,6 @@ export default function Navbar() {
                                 className="flex items-center gap-2 text-primary font-body text-lg font-semibold animate-pulse-glow px-4 py-2 rounded-full border border-primary/30 hover:bg-primary/10 transition-colors"
                             >
                                 <FaPhone className="text-sm" />
-                                +91 99427 12219
                             </a>
                         </MagneticWrapper>
                     </div>
