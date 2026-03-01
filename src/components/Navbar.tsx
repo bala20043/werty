@@ -223,7 +223,7 @@ export default function Navbar() {
                         Contact
                     </Link>
                     <a href="tel:+919942712219" className="flex items-center gap-2 text-primary font-body text-lg py-2">
-                        <FaPhone className="text-sm" /> +91 99427 12219
+                        <FaPhone className="text-sm" />
                     </a>
                 </div>
             </div>
