@@ -48,11 +48,20 @@ export default async function handler(req, res) {
 
         // 4. Return success
         return res.status(200).json({ message: 'Order submitted successfully', data })
-    } catch (error) {
+    } catch (error: any) {
         console.error('Proxy Error:', error.message)
+
+        // Extract deep cause for tracking down "fetch failed" in Node 18+
+        let causeMessage = 'No explicit cause';
+        if (error.cause) {
+            causeMessage = error.cause.message || JSON.stringify(error.cause);
+        }
+
         return res.status(500).json({
             error: 'Failed to submit order to database.',
-            details: error.message
+            details: error.message,
+            cause: causeMessage,
+            stack: error.stack
         })
     }
 }
