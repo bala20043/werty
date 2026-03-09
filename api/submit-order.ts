@@ -18,10 +18,12 @@ export default async function handler(req, res) {
     } = req.body
 
     // 2. Validate environment variables (Server-side)
-    const supabaseUrl = process.env.VITE_SUPABASE_URL
-    const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY
+    // We trim them to prevent errors caused by accidental spaces/newlines in Vercel dashboard
+    const supabaseUrl = (process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL)?.trim()
+    const supabaseKey = (process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY)?.trim()
 
     if (!supabaseUrl || !supabaseKey) {
+        console.error('SERVER CONFIG ERROR: Missing Supabase URL or Key')
         return res.status(500).json({ error: 'Supabase configuration missing on server.' })
     }
 

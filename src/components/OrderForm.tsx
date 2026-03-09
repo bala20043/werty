@@ -89,23 +89,21 @@ export default function OrderForm({ preSelectedService }: OrderFormProps) {
                 timeline: '',
                 description: '',
             });
-        } catch (err: unknown) {
+        } catch (err: any) {
             console.error('Order Submission Error:', err);
             let message = 'Something went wrong. Please try again.';
 
-            if (err instanceof Error) {
-                if (err.message.includes('timeout') || err.message.includes('fetch')) {
-                    message = 'Database connection error. Please ensure your Supabase project is active and not paused.';
-                } else {
-                    message = err.message;
-                }
-            } else if (typeof err === 'object' && err !== null && 'code' in err) {
-                const errorObj = err as { code: string; message: string };
-                if (errorObj.code === 'PGRST301' || errorObj.message?.includes('not found')) {
-                    message = 'Configuration error: The "orders" table does not exist in your Supabase database.';
-                } else {
-                    message = `Database error (${errorObj.code}): ${errorObj.message}`;
-                }
+            const errMessage = err?.message || String(err);
+            const isConnectivityError = errMessage.toLowerCase().includes('fetch') ||
+                errMessage.toLowerCase().includes('timeout') ||
+                errMessage.toLowerCase().includes('network');
+
+            if (isConnectivityError) {
+                message = 'Connection error: Your internet or the server is blocking the request. Please try again in 1 minute.';
+            } else if (err?.code === 'PGRST301') {
+                message = 'Database error: The "orders" table was not found. Please ensure your Supabase schema is set up.';
+            } else if (err?.message) {
+                message = err.message;
             }
 
             setError(message);
